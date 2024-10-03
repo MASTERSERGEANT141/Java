@@ -1,0 +1,761 @@
+Experiment No. 1
+Title: Implementation of class and object
+Name: Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                     TY CSE Batch: T3
+
+
+Q.1.1 Write a program to multiply matrix.
+
+import java.util.Scanner;
+public class Matrixmul {
+    public static void printmatrix(int[][] m, int rowsize, int colsize) {
+        for (int i = 0; i < rowsize; i++) {
+            for (int j = 0; j < colsize; j++){
+                System.out.print(m[i][j] + " ");
+            }
+            System.out.println();
+        }
+    }
+    public static int[][] multiplymatrix(int[][]  A, int[][] B) {
+        int i, j, k;
+        int row1 = A.length, col1 = A[0].length, row2 = B.length, col2 = B[0].length;
+        if (row2 != col1) {
+            throw new IllegalArgumentException("Matrix dimension invalid");
+        }
+        int[][] C = new int[row1][col2];
+        for (i = 0; i < row1; i++) {
+            for(j = 0; j < col2; j++) {
+                for(k = 0; k < row2; k++) {
+                    C[i][j] += A[i][k] * B[k][j];
+                }
+            }
+        }
+        return C;
+    }
+    public static int[][] inputmatrix(String name) {
+        int row, col;
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter the number of rows in " + name + ": ");
+         row = sc.nextInt();
+        System.out.print("Enter the number of columns in " + name + ": ");
+        col = sc.nextInt();
+        int[][] matrix = new int[row][col];
+        for (int i = 0; i < row; i++) {
+            for(int j = 0; j < col; j++) {
+                System.out.printf("Enter the element at position [%d][%d]:", i, j);
+                matrix[i][j] = sc.nextInt();
+            }
+        }
+        return matrix;
+        
+    }
+    public static void main(String[] args) {
+        int[][] A = inputmatrix("A");
+        int[][] B = inputmatrix("B");
+        int[][] C = multiplymatrix(A, B);
+        System.out.println("\n Product of the above matrices is: ");
+        printmatrix(C, C.length, C[0].length);
+    }
+    
+}
+
+Output:
+
+
+
+
+
+
+
+
+
+
+Experiment No. 1
+
+Q.1.2 Write a java program to implement a scanner class.
+
+import java.util.Scanner;
+public class ScannerImpl {
+    public static void main(String[] args){
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a number:");
+        int num = sc.nextInt();
+        System.out.println("You enabled: " + num);
+
+        System.out.print("Enter a string: ");
+        String str = sc.next();
+        System.out.println("You entered: " + str);
+
+        sc.close();
+    }
+}
+Output:
+
+
+
+
+
+
+
+Experiment No. 2
+Title: Implementation of inheritance and string function.
+Name: Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                     TY CSE Batch: T3
+
+Q.2.1 Write program to implement Inheritance.
+
+class Super{
+    public void display(){
+        System.out.println("Super class");
+    }
+}
+class Sub extends Super{
+    public void display(){
+        System.out.println("Sub class");
+    }
+}
+class Sub2 extends Super{
+    public void display(){
+        System.out.println("Sub2 class");
+    }
+}
+class Multilevelsub extends Sub{
+    public void display(){
+        System.out.println("Multilevel class");
+    }
+}
+class Hierarchicalsub extends Super{
+    public void display(){
+        System.out.println("Hierarchicalsub class");
+    }
+}
+public class Inheritance{
+    public static void main(String[] args){
+        Super b = new Super();
+        Sub d = new Sub();
+        Super b2 = new Sub();
+        Sub2 d2 = new Sub2();
+        Multilevelsub mid = new Multilevelsub();
+        Hierarchicalsub hd = new Hierarchicalsub();
+        Super b3 = new Hierarchicalsub();
+        Super[]supers ={
+            b,d,b2,d2,mid,hd,b3
+        };
+        for(Super Super : supers ){
+            Super.display();
+        }
+    }
+}
+Output:
+
+
+
+
+
+
+
+Experiment No. 2
+
+Q.2.2Write a program to Implementation of string function.
+public class StringFns{
+    public static void main(String[] args){
+        String str = "Hello World!";
+        System.out.println("String: "+str);
+        System.out.println("Length: "+str.length());
+        System.out.println("Character at index 0: "+str.charAt(0));
+        System.out.println("Substring from index 0 to 5: "+str.substring(0,5));
+        System.out.println("Index of 'o': "+str.indexOf('o'));
+        System.out.println("Index of 'o' from index 5 : " + str.indexOf('o', 5));
+        System.out.println("Index of \"|o\": "+str.indexOf("|o"));
+        System.out.println("Index of \"|o\" from index 5 : " + str.indexOf("|o", 5));
+        System.out.println("Last index of 'o': " + str.lastIndexOf('o'));
+        System.out.println("Last index of \"|o\": : " + str.lastIndexOf("|o"));
+        System.out.println("Concatenaion: " +str.concat("How are you?"));
+        System.out.println("Replace 'o' with 'a': " + str.replace('o', 'a'));
+        System.out.println("Replace \"|o\" with \"|a\":" + str.replace("|o", "|a"));
+        System.out.println("Uppercase: " + str.toUpperCase());
+        System.out.println("LowerCase: " + str.toLowerCase());
+        System.out.println("Trim: " + " Hello world!".trim());
+    } 
+}
+
+
+
+
+
+
+Output:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment No. 3
+Title: Implementation of Encapsulation.
+Name: Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                     TY CSE Batch: T3
+
+Q.1 Write a program to Implement  a concept of encapsulation
+(Create a class called Employee that includes the three pieces of information as a instance variable, last name, first name, monthly salary, class should have a constructor which initialize the variable which provide the set and get method for each instance variable. If monthly salary is not positive set is 0. Create two Employee objects yearly salary. Then give  each employee a 10% raise and display it.  )
+import java.util.*;
+public class Employee{
+    private String firstName;
+    private String lastName;
+    private double monthlySalary;
+public Employee(String firstName, String lastName, double monthlySalary) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.monthlySalary = monthlySalary;
+} 
+public static void main(String[] args) {
+    Employee employee1 = new Employee("John", "Dee", 1000); 
+    Employee employee2 = new Employee("Jane", "Doe", 2000);
+    System.out.println("Employee 1:" + employee1.getFirstName() + employee1.getLastName()); 
+    System.out.println("Employee 2:" + employee2.getFirstName() + employee2.getLastName());
+    System.out.println("Employee 1 yearly salary:" + employee1.getYearlySalary());
+    System.out.println("Employee 2 yearly salary:" + employee2.getYearlySalary());
+    employee1.raiseSalary(10);
+    employee2.raiseSalary(10);
+    System.out.println("\nAfter 10% raise:");
+    System.out.println("Employee 1 yearly salary:" + employee1.getYearlySalary()); 
+    System.out.println("Employee 2 yearly salary:" + employee2.getYearlySalary());
+}
+public String getFirstName() { 
+    return firstName;
+}
+public void setFirstName(String firstName) {
+    this.firstName = firstName;
+}
+public String getLastName() { 
+    return lastName;
+}
+public void setLastName(String lastName) {
+    this.lastName = lastName;
+}
+public double getMonthlySalary(){
+    return monthlySalary;
+}
+public void setMonthlySalary(double monthlySalary){
+    if(monthlySalary < 0){
+        this.monthlySalary = 0;
+    }else{
+        this.monthlySalary = monthlySalary;
+    }
+}
+public double getYearlySlary(){
+    return monthlySalary * 12;
+}
+public void raiseSalary(double percentage){
+    monthlySalary += monthlySalary * percentage / 100;
+}
+}
+Output : 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment No. 4
+Title: Implementation of Overloading and Overriding.
+Name: Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                     TY CSE Batch: T3
+
+Q.4.1 Program to illustrate concept of overloading.
+
+class Adder{
+    static int add(int a, int b){
+        return a + b;
+    }
+    static int add(int a, int b, int c){
+        return a + b + c;
+    }
+    static double add(double a, double b){
+        return a+b;
+    }
+}
+public class Overloading{
+    public static void main(String[] args){
+        System.out.println("Sum of 1 and 2:" + Adder.add(1 , 2));
+        System.out.println("Sum of 1.0 and 2.0:" + Adder.add(1.0 , 2.0));
+        System.out.println("Sum of 1.2 and 3:" +Adder.add(1.2 , 3));
+
+    }
+}
+
+
+
+Output :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Q.4.2. Program for Overriding concept.
+
+class OverridingBase{
+    public void f(){
+        System.out.println("Running OverridingBase.foo()");
+    }
+    public void g(){
+        System.out.println("Running OverridingBase.bar()");
+    }
+}
+public class Overriding extends OverridingBase{
+    public static void main(String[] args){
+        OverridingBase base = new OverridingBase();
+        base.f();
+        base.g();
+
+        OverridingBase overriding = new Overriding();
+        overriding.f();
+        overriding.g();
+    }
+
+    public void f(){
+        System.out.println("Running Overriding.foo()");
+    }
+
+    public void g(){
+        System.out.println("Running Overriding.bar()");
+    }
+}
+
+
+Output :
+
+
+
+
+
+Experiment No. 5
+Title : Impementation of static variables and static methods.
+Name : Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                     TY CSE Batch: T3
+
+
+Q.  Write a program to implement Static Variable and Method 
+(Create class SavingsAccount. Use a static variable annualInterestRate to store the annual interest rate for all account holders. Each object of the class contains aprivate variable savingsBalance indicating the interest by multiplying the savingsBalance by annualInterestRate divided by 12this interest should be added to savinsBalance. Provide a static method modifyInterestRate that sets the annualInterestRate to a new value 
+Write a program to test class SavingsAccount. Instantiate two savingsAccount objects, saver2 and saver2, with balances of Rs.2000.00 and Rs.3000.00, respectively. Set annualInterestRate to 4%, then calculate the monthly interest and print the new balances for both savers. Then set 
+annualInterestRate to 5%, calculate the next month’s interest and print the new balances for both savers.)
+
+public class SavingAccount{ 
+	 private static double annualIntrestRate=0.04; 
+	 private double savingsBalance; 
+	 public SavingAccount(double savingsBalance) { 
+	 this.savingsBalance=savingsBalance; 
+	 } 
+	 public static void modifyIntrestRate(double newIntrestRate) { 
+	 annualIntrestRate=newIntrestRate; 
+	 } 
+	 public static void main(String[] args) { 
+	 SavingAccount saver1 = new SavingAccount(2000); 
+	 SavingAccount saver2 = new SavingAccount(3000); 
+	 System.out.println("\t\tSaver1\tSaver2");   
+System.out.println("Intrest\t\t"+saver1.claculateMonthlyIntrest()+"\t"+saver2.claculateMonthlyIntre st()); 
+	 System.out.println("Balance\t\t"+saver1.savingsBalance+"\t"+saver2.savingsBalance); 
+	 SavingAccount.modifyIntrestRate(0.05);
+               System.out.println("\n\n\t\tSaver1\tSaver2"); 
+System.out.println("Intrest\t\t"+saver1.claculateMonthlyIntrest()+"\t"+saver2.claculateMonthlyIntre st()); 
+	 System.out.println("Balance\t\t"+saver1.savingsBalance+"\t"+saver2.savingsBalance); 	
+
+
+
+
+ } 
+	 public double claculateMonthlyIntrest(){ 
+
+
+ double monthlyIntrest=Math.round(savingsBalance*(annualIntrestRate/12)*100.0)/100.0; 	 savingsBalance+=monthlyIntrest; 
+	 return monthlyIntrest; 
+	 } 
+}
+
+Output :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment No. 6
+Title : Impelementation of Interface.
+Name : Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                    TY CSE Batch: T3
+
+Q. Write a program to implement Interface using extends Keyword 
+(Create Vehicle Interface with name, maxPassanger, and maxSpeeed variable. Create LandVehicle and SeaVehicleInterface from Vehicle interface. LandVehicle has num Wheels variable and drive method. SeaVehicle has displacement variable and launch method. Create Car class from LandVehicle, HoverCraft from LandVehicle and SeaVehicle interface. Also create Ship from SeaVehicle. Provide additional methods in HoverCraft as enterLand and enterSea. Similarly provide other methods for class Car and Ship. Demonstrate all classes in application.) 
+
+interface Vehicle { 
+	String name = ""; 
+	int maxPassengers = 0; 
+	int maxSpeed = 0; 
+} 
+interface SeaVehicle extends Vehicle { 
+	int displacement = 0; 
+	void launch(); 
+} 
+interface LandVehicle extends Vehicle { 
+	int numWheels = 0; 
+	void drive(); 
+} 
+class Car implements LandVehicle { 
+	public int numWheels = 4; 
+	public int maxPassengers = 5
+public int maxSpeed = 180; 
+public String name = "Car"; 
+public static void main(String[] args) { 
+Car car = new Car(); 
+car.drive(); 
+System.out.println("\nName\t\t:" + car.name); 
+System.out.println("NumWheels\t:" + car.numWheels); System.out.println("MaxPassengers\t:" + car.maxPassengers); System.out.println("MaxSpeed\t:" + car.maxSpeed); 
+} 
+@Override 
+public void drive() { 
+System.out.println("* 
+DRIVING A CAR 
+*"); 
+
+	} 
+} 
+class Hovercraft implements SeaVehicle, LandVehicle { 
+	public int displacement=10; 
+	public int numWheels=-0; 
+	public int maxPassengers=8; 
+	public int maxSpeed=70; 
+	public String name="Hovercraft"; 
+	public static void main(String[] args) { 
+	Hovercraft hovercraft = new Hovercraft(); 
+	hovercraft.enterland(); 
+	hovercraft.drive(); 
+	hovercraft.enterSea(); 
+	hovercraft.launch(); 
+	System.out.println("\nName\t\t\t:" + hovercraft.name); 
+	System.out.println("Displacement\t\t:" + hovercraft.displacement); 	System.out.println("NumWheels\t\t:" + hovercraft.numWheels);
+              System.out.println("MaxPassengers\t\t:" + hovercraft.maxPassengers);                   System.out.println("MaxSpeed\t\t:" + hovercraft.maxSpeed); 
+} 
+@Override 
+public void drive() { 
+System.out.println("* 
+DRIVING A HOVERCEAFT 
+*"); 
+
+		} 
+		@Override 
+public void launch() { 
+		System.out.println("Launching a hovercraft"); 
+		} 
+public void enterland() { 
+		System.out.println("Entering land"); 
+		} 
+public void enterSea() { 
+		System.out.println("\nEntering sea"); 
+		} 
+} 
+class Ship implements SeaVehicle { 
+		public int displacement = 10; 
+		public int maxPassengers = 25; 
+		public int maxSpeed = 35; 
+		public String name = "Ship"; 
+public static void main(String[] args) { 
+		Ship ship = new Ship(); 
+		ship.launch(); 
+		System.out.println("\nName\t\t:" + ship.name); 
+		System.out.println("Displacement\t:" + ship.displacement); 		System.out.println("MaxPassengers\t:" + ship.maxPassengers); 		System.out.println("MaxSpeed\t:" + ship.maxSpeed); 
+
+
+} 
+@Override 
+public void launch() { 
+System.out.println("* 
+LAUNCHING A SHIP 
+*"); 
+
+} 
+} 
+
+
+Output: 
+
+
+
+
+
+
+
+
+
+
+Experiment No. 7
+Title : Impelementation of Abstract class.
+Name : Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                     TY CSE Batch: T3
+
+Q . Write a program to implement Abstract class with example 
+(Create abstract class Shape which has instance variables side, area and perimeter And methods calculateArea(), calculatePerimeter() as abstract 
+methods and display() as concrete method. Write subclasses which extend Shapeclass like Triangle, Rectangle, Circle, Cube and Square and override .) 
+
+ 
+package Shapes; 
+public abstract class Shape { 
+	protected String name; 
+	protected double side; protected 
+	double area; protected double 
+	perimeter; 
+	public Shape(double side) { 
+			this.side = side; 
+	} 
+	public static void main(String[] args) { Shape[] 
+		shapes = new Shape[5]; shapes[0] = new 
+		Shapes.Triangle(5, 10); shapes[1] = new 
+		Shapes.Rectangle(5, 10);shapes[2] = new 
+		Shapes.Circle(5); shapes[3] = new 
+		Shapes.Cube(5); shapes[4] = new 
+		Shapes.Square(5); 
+			System.out.printf("%-10s %-10s %-10s", "Name", "Area", "Perimeter"); 
+System.out.print("\n- 
+-"); 
+for (Shape shape : shapes) { 
+shape.calculateArea(); 
+shape.calculatePerimeter() 
+
+shape.display(); 
+		} 
+	} 
+public abstract void calculateArea(); 
+public abstract void calculatePerimeter();public 
+} 
+void display() { 
+	System.out.printf("\n%-10s %-10.2f %-10.2f", name, area, perimeter); 
+}
+
+ 
+
+}
+package Shapes; 
+public class Circle extends Shape { 
+	public Circle(double side) { 
+		super(side); name = 
+			"Circle"; 
+	} 
+} 
+@Override 
+public void calculateArea() { 
+	area = Math.PI * Math.pow(side,2); } 
+@Override 
+public void calculatePerimeter() { 
+	perimeter = 2 *Math.PI* side; 
+} 
+
+package Shapes; 
+class Cube extends Shape { public 
+	Cube(double side) { 
+		super(side); name 
+			= "Cube"; 
+	}
+@Override 
+public void calculateArea() {area 
+	= 6*side *side; 
+} 
+} 
+@Override 
+public void calculatePerimeter() { 
+	perimeter = 12 * side; 
+} 
+
+package Shapes; 
+class Rectangle extends Shape { 
+	private final double length; 
+public Rectangle(double side, double length) { 
+super(side); 
+this.length = length; 
+} 
+@Override 
+public void calculateArea() {area 
+	= side * length; 
+} 
+} 
+@Override 
+public void calculatePerimeter() { 
+	perimeter = 2 * (side + length); 
+} 
+
+package Shapes; 
+class Square extends Shape { 
+public Square(double side) { 
+super(side); 
+		name = "Square"; 
+} 
+@Override
+public void calculateArea() {area 
+	= side * side; 
+} 
+@Override 
+public void calculatePerimeter() { 
+	perimeter = 4 * side; 
+} 
+} 
+
+package Shapes; 
+class Triangle extends Shape { 
+	private final double height; 
+public Triangle(double side, double height) { 
+super(side); 
+this.height = height; 
+name = "Triangle"; 
+} 
+} 
+@Override 
+public void calculateArea() {area 
+	= 0.5 * side * height; 
+} 
+@Override 
+public void calculatePerimeter() { 
+	perimeter = 3 * side; 
+} 
+
+
+
+}
+
+
+Output :
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Experiment No. 8
+Title : Impelementation of Package.
+Name : Harshwardhan Mahesh Sawant
+Roll No. 50                                                                                                                    TY CSE Batch: T3
+
+Write a program to implement concept of package. (Develop a mathematical package for statistical operations Program: like mean, mode, median Average . Standard Deviation . Create a subPackage – convert. In convert package provide class to convert decimal to octal, binary, hex and vice- versa .)
+
+package Mathops; 
+import static Mathops.Conversions.Conversions.fromDecimalToBase;public class Arithmetic { 
+public static void main(String[] args) { 
+	int[] numbers = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10}; 
+double mean = mean(numbers); double 
+median = median(numbers); double mode 
+= mode(numbers); double average = 
+average(numbers); 
+double standardDeviation = standardDeviation(numbers); 
+System.out.printf("%-20s %-20s", "Statistic", "Value"); 
+System.out.print("\n 
+"); 
+System.out.printf("\n%-20s %-20.2f", "Mean", mean); System.out.printf("\n%-20s %-20.2f", "Median", median); System.out.printf("\n%-20s %-20.2f", "Mode", mode); System.out.printf("\n%-20s %-20.2f", "Average", average); System.out.printf("\n%-20s %-20.2f", "Standard Deviation", 
+
+standardDeviation); 
+int decimal = 24; 
+String binary = fromDecimalToBase(decimal,2);String 
+octal = fromDecimalToBase(decimal,8);  
+String hexadecimal = fromDecimalToBase(decimal,16); 
+System.out.println("\n\nConversions"); 
+
+
+
+		System.out.printf("%-10s %-10s %-10s %-10s", "Decimal", "Binary", "Octal", "Hexadecimal"); 
+		System.out.print("\n- 
+		System.out.printf("\n%-10s %-10s %-10s %-10s", decimal, binary, octal, hexadecimal); 
+	} 
+"); 
+
+public static double mean(int[] numbers) {int 
+	sum = 0; 
+	for (int number : numbers) {sum 
+	+= number; 
+	} 
+	return (double) sum / numbers.length; 
+} 
+public static double median(int[] numbers) {int 
+	middle
